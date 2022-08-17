@@ -4,8 +4,16 @@ window.addEventListener("load", function () {
   baguetteBox.run(".gallery");
 });
 
-const input = document.querySelector("#search-form");
+//Search Functionality
+
+const input = document.querySelector("#search-form"); //Targets input element
 
 input.addEventListener("keyup", () => {
-  console.log(input.value);
+  console.log(input.value.toLowerCase());
 });
+
+const caption = document.querySelectorAll("a");
+
+const captionValue = caption.getAttribute("data-caption");
+
+console.log(captionValue);
