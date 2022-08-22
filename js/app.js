@@ -17,55 +17,23 @@ function search(event) {
   filterImages(searchValue);
 }
 
+//Function to filter images
 function filterImages(searchValue) {
-  const imageCaption = document
-    .querySelector(".gallery_img")
-    .getAttribute("data-caption");
+  const images = Array.from(document.querySelectorAll(".gallery_img"));
+  const rejectedImages = images.filter((image) => {
+    const imageCaption = image.getAttribute("data-caption").toLowerCase();
+    return !imageCaption.includes(searchValue);
+  });
 
-  // console.log(imageCaption);
-  console.log(imageCaption.includes("hay"));
-
-  if (imageCaption.includes(searchValue)) {
-    return console.log("We have a match!");
-  } else {
-    return console.log("We don't have a match!");
-  }
+  displayFilteredImages(rejectedImages, images);
 }
-// const input = document.querySelector("#search-form"); //Targets input element
 
-// input.addEventListener("submit", () => {
-//   console.log(input.value.toLowerCase());
-//   let searchValue = input.value.toLowerCase();
-//   // let searchValue = input.value.toLowerCase();
-//   // let caption = document.querySelectorAll("data-caption");
-//   // caption.getAttribute("data-caption");
-
-// const firstImage = document
-//   .querySelector(".gallery_img")
-//   .getAttribute("data-caption");
-
-// // for (let i = 0; i < 12; i++) {
-// //   console.log(caption[i].dataset.caption);
-// // }
-
-//   if (searchValue.includes(firstImage)) {
-//     console.log("We have a match!");
-//   } else {
-//     console.log("We don't have a match!");
-//   }
-// });
-
-// if (searchValue.includes(caption)) {
-//   console.log("We have a match!");
-// } else {
-//   console.log("We don't have a match!");
-// }
-
-// // Code for a single item
-// const firstImage = document
-//   .querySelector(".gallery_img")
-//   .getAttribute("data-caption");
-
-// console.log(firstImage);
-
-// let textValue = firstImage.textContent || firstImage.innerText;
+//Function to display images
+function displayFilteredImages(rejectedImages, images) {
+  images.forEach((image) => {
+    image.classList.remove("hide");
+  });
+  rejectedImages.forEach((image) => {
+    image.classList.add("hide");
+  });
+}
