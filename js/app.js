@@ -5,12 +5,15 @@ window.addEventListener("load", function () {
 });
 
 //Search Functionality
-const searchForm = document.querySelector(".search-form");
-searchForm.addEventListener("submit", search);
+// const searchForm = document.querySelector(".search-form");
+// searchForm.addEventListener("submit", search);
+
+const searchInput = document.querySelector(".search-form_input");
+searchInput.addEventListener("keyup", search);
 
 function search(event) {
   event.preventDefault();
-  const searchInput = document.querySelector(".search-form_input");
+  // const searchInput = document.querySelector(".search-form_input");
   const searchValue = searchInput.value.toLowerCase();
   // console.log(searchValue);
 
